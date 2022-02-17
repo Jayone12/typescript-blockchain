@@ -1,35 +1,29 @@
-//하나의 객체를 type으로 지정하기 위해 interface를 사용한다.
-// interface는 컴파일되지 않는다.
-// interface Human {
-//   name: string;
-//   age: number;
-//   gender: string;
-// }
+class Block {
+  public index: number;
+  public hash: string;
+  public previousHash: string;
+  public data: string;
+  public timestamp: number;
 
-// private은 클래스 내부에서만 접근이 가능하다.
-class Human {
-  public name: string;
-  public age: number;
-  public gender: string;
-  constructor(name: string, age: number, gender: string) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+  constructor(
+    index: number,
+    hash: string,
+    previousHash: string,
+    data: string,
+    timestamp: number
+  ) {
+    this.index = index;
+    this.hash = hash;
+    this.previousHash = previousHash;
+    this.data = data;
+    this.timestamp = timestamp;
   }
 }
 
-// const person = {
-//   name: "BigJay",
-//   age: 34,
-//   gender: "male",
-// };
+const genesisBlock: Block = new Block(0, "20202020202", "", "Hello", 123456);
 
-const bigJay = new Human("BigJay", 34, "male");
+let blockchain: [Block] = [genesisBlock];
 
-const sayHi = (person: Human): string => {
-  return `Hello ${person.name}, you are ${person.age}, you are ${person.gender}`;
-};
-
-console.log(sayHi(bigJay));
+console.log(blockchain);
 
 export {};
